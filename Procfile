@@ -1,0 +1,1 @@
+web: gunicorn adventure_finder.wsgi
