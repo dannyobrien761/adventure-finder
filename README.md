@@ -64,7 +64,7 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 
 ## <div id="ux">UX</div>
 ### Overview
-Adventure Finder is a vlog and blog app that allows users to  easily find adventures  within activities and locations they are interested in. the adventure finder app is a community of outdoor enthusiasts looking to find information about an outdoor activity, location, local businesses and be able comment or like on thier favorite posts. 
+Adventure Finder is a vlog and blog app that allows users to  easily find adventures  within activities and locations they are interested in. the adventure finder app is a community of outdoor enthusiasts looking to find information about an outdoor activity, location, local businesses and be able comment or like on thier favorite posts. Magazine style operated with only featured user stories written by designated approved authors.
 
 #### First Time User
 - As a person who is interested in outdoor adventures.
@@ -97,3 +97,17 @@ the acceptance criteria was formulated  from the card conversation and confirmat
     
 
   ---
+
+  superuser created for django admin CRUD operations 
+
+
+#### commwnt feature
+class Comment(models.Model):
+  author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
+  user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+
+
+The author field is set as null=True, blank=True, so it’s only populated if the commenter is an author.
+This setup enables the app to differentiate between comments from authors and regular users
+
+
