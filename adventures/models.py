@@ -22,8 +22,11 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     excerpt = models.TextField(blank=True)
 
+    class meta:
+            ordering = ["-created_on"]
+
     def __str__(self):
-        return self.title
+        return f"{self.title}| Written by {self.author}"
 
 
 class Comment(models.Model):
@@ -34,6 +37,8 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)  
 
+    class meta:
+        ordering = ["created_at"]
     def __str__(self):
-        return f"Comment by {self.user} on {self.post.title}"
+        return f"Comment by {self.content} by {self.user}"
 
