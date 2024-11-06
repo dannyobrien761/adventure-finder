@@ -111,3 +111,7 @@ The author field is set as null=True, blank=True, so it’s only populated if th
 This setup enables the app to differentiate between comments from authors and regular users
 
 
+approved = models.BooleanField(default=False)
+
+ensures that new comments are unapproved by default, making it easy to manage comment moderation.
+This setup will let you handle comment approval efficiently, with all new comments defaulting to unapproved.
