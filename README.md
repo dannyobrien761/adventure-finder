@@ -82,7 +82,8 @@ Determining the best approach meant studying the needs of potential users. This 
 #### Agile
 The Agile methodology was used to plan the project. Github was used as the tool to demonstrate this.  Issues were used to create User Stories with custom templates ([Link to Kanban board](https://github.com/users/dannyobrien761/projects/1/views/1)). 
 
-
+#### Good Design practice
+I separated the urls.py files into separate apps because, as stated, this follows the Django design philosophy of loose coupling. 
 ##### User Stories 
 Issues were used to create User Stories with custom templates for admin and user. I added the acceptance criteria and the tasks so I can track my work effectively. Once I completed a User Story I would move it from `in progress` to `completed`. 
 
