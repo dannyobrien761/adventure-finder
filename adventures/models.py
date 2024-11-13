@@ -46,23 +46,63 @@ class Comment(models.Model):
 
 
 class Tag(models.Model):
+    # category choices defined
+    LOCATION = 'location'
+    ACTIVITIES = 'activities'
+    TYPE_OF_POST = 'type_of_post'
+    #Lists that provide the actual choices 
+    CATEGORY_CHOICES = [
+        (LOCATION, 'Location'),
+        (ACTIVITIES, 'Activities'),
+        (TYPE_OF_POST, 'Type of Post'),
+    ]
+
+    #tag options for each category
+    LOCATION_CHOICES = [
+        ('europe', 'Europe'),
+        ('asia', 'Asia'),
+        ('africa', 'Africa'),
+        ('north_america', 'North America'),
+        ('south_america', 'South America'),
+        ('australia', 'Australia'),
+        ('antarctica', 'Antarctica'),
+    ]
+
+    ACTIVITIES_CHOICES = [
+        ('hiking', 'Hiking'),
+        ('camping', 'Camping'),
+        ('fishing', 'Fishing'),
+        ('skiing', 'Skiing'),
+        ('snowboarding', 'Snowboarding'),
+        ('sailing', 'Sailing'),
+        ('kitesurfing', 'Kite Surfing'),
+        ('surfing', 'Surfing'),
+        ('mountainbiking', 'Mountain Biking'),
+        ('foiling', 'foiling'),
+        ('cycling', 'Cycling'),
+        ('running', 'Running'),
+    ]
+
+    TYPE_CHOICES = [
+        ('promo', 'Promo'),
+        ('blog', 'Blog'),
+    ]
+
+    # Fields for category and tag ID
     tag_id = models.AutoField(primary_key=True) 
-    tag_type = models.CharField(max_length=50, unique=True)  #tag type should be hiking, location, advert,  
-    description = models.TextField(blank=True, null=True)  
-    created_at = models.DateTimeField(auto_now_add=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    
 
     def __str__(self):
-        return self.tag_type
+        return f"{self.get_category_display()}: {self.category}"
 
 class PostTag(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)  # Optional field for tracking when the relationship was added
 
     class Meta:
         unique_together = ('post', 'tag')  # Composite primary key ensuring unique post-tag pairs
-        verbose_name = 'Post Tag'  # For display purposes in admin, optional
-        verbose_name_plural = 'Post Tags'
+        post_tag_combo = 'Post Tag'  
 
     def __str__(self):
         return f"{self.post.title} - {self.tag.name}"

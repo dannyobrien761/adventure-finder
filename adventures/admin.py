@@ -15,6 +15,8 @@ class PostAdmin(SummernoteModelAdmin):
 
 
 # Register your models here.
+admin.site.register(Tag)
+admin.site.register(PostTag)
 admin.site.register(Author)
 admin.site.register(Comment)
 
