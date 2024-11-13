@@ -12,38 +12,6 @@ class Author(models.Model):
     def __str__(self):
         return self.user.username
 
-class Post(models.Model):
-    title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="blog_posts")
-    content = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-    status = models.IntegerField(choices=STATUS, default=0)
-    excerpt = models.TextField(blank=True)
-
-    tags = models.ManyToManyField('Tag', through='PostTag', related_name='posts')
-
-    class meta:
-            ordering = ["-created_on"]
-
-    def __str__(self):
-        return f"{self.title}| Written by {self.author}"
-
-
-class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='commenter', null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='commenter')
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)  
-
-    class meta:
-        ordering = ["created_at"]
-    def __str__(self):
-        return f"Comment by {self.content} by {self.user}"
-
 
 class Tag(models.Model):
     # category choices defined
@@ -92,9 +60,42 @@ class Tag(models.Model):
     tag_id = models.AutoField(primary_key=True) 
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     
-
     def __str__(self):
         return f"{self.get_category_display()}: {self.category}"
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="blog_posts")
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+    excerpt = models.TextField(blank=True)
+
+    tags = models.ManyToManyField(Tag, through='PostTag', related_name='posts')
+
+    class meta:
+            ordering = ["-created_on"]
+
+    def __str__(self):
+        return f"{self.title}| Written by {self.author}"
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='commenter', null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='commenter')
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)  
+
+    class meta:
+        ordering = ["created_at"]
+    def __str__(self):
+        return f"Comment by {self.content} by {self.user}"
+
 
 class PostTag(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -102,7 +103,6 @@ class PostTag(models.Model):
 
     class Meta:
         unique_together = ('post', 'tag')  # Composite primary key ensuring unique post-tag pairs
-        post_tag_combo = 'Post Tag'  
 
     def __str__(self):
         return f"{self.post.title} - {self.tag.name}"
