@@ -19,6 +19,7 @@ from django.urls import path, include
 #from adventures import views as index_views
 #path('', index_views.index, name='index'),
 urlpatterns = [
-    path("", include("adventures.urls"), name="adventure-urls"),
     path('admin/', admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
+    path("", include("adventures.urls"), name="adventure-urls"),
 ]
