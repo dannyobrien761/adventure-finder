@@ -120,10 +120,11 @@ This setup will let you handle comment approval efficiently, with all new commen
 #### Tag feature
 
 the tag feature allows authorized users ie "blog authors" to create tags for individual posts. The Tag model defines "Choices" for LOCATION, ACTIVITIES, and TYPE with separate choice fields that lets you to select each attribute individually for a desired post.
-**Simplifies Filtering:** Each attribute (location, activity, type) has its own field, making it easier to filter tags by these specific fields.
-**Greater Flexibility:** You’re not limited to a single category per tag. You can set a tag to have a specific location, activity, and type simultaneously.
-**User-Friendly:** If users are selecting these attributes in the admin interface, it’s straightforward, as each field has defined options.
-**Nullability**: I set blank=True and null=True to make each field optional. This way, a tag could specify only a location, only an activity, or all three.
+
+- **Simplifies Filtering:** Each attribute (location, activity, type) has its own field, making it easier to filter tags by these specific fields.
+- **Greater Flexibility:** You’re not limited to a single category per tag. You can set a tag to have a specific location, activity, and type simultaneously.
+- **User-Friendly:** If users are selecting these attributes in the admin interface, it’s straightforward, as each field has defined options.
+- **Nullability**: I set blank=True and null=True to make each field optional. This way, a tag could specify only a location, only an activity, or all three.
 
 ##### Conclusion:
 tags are tied to posts by PostTag junction table and offer clear filtering and display options detailing location of post, activity featured and the type of post in my adventures app.

@@ -68,7 +68,7 @@ class Post(models.Model):
 
     tags = models.ManyToManyField(Tag, through='PostTag', related_name='posts')
 
-    class meta:
+    class Meta:
             ordering = ["-created_on"]
 
     def __str__(self):
@@ -83,7 +83,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)  
 
-    class meta:
+    class Meta:
         ordering = ["created_at"]
     def __str__(self):
         return f"Comment by {self.content} by {self.user}"
