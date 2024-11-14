@@ -14,17 +14,7 @@ class Author(models.Model):
 
 
 class Tag(models.Model):
-    # category choices defined
-    LOCATION = 'location'
-    ACTIVITIES = 'activities'
-    TYPE_OF_POST = 'type_of_post'
-    #Lists that provide the actual choices 
-    CATEGORY_CHOICES = [
-        (LOCATION, 'Location'),
-        (ACTIVITIES, 'Activities'),
-        (TYPE_OF_POST, 'Type of Post'),
-    ]
-
+    
     #tag options for each category
     LOCATION_CHOICES = [
         ('europe', 'Europe'),
@@ -58,10 +48,12 @@ class Tag(models.Model):
 
     # Fields for category and tag ID
     tag_id = models.AutoField(primary_key=True) 
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
-    
+    location = models.CharField(max_length=20, choices=LOCATION_CHOICES, blank=True, null=True)
+    activity = models.CharField(max_length=20, choices=ACTIVITIES_CHOICES, blank=True, null=True)
+    type_choices = models.CharField(max_length=20, choices=TYPE_CHOICES, blank=True, null=True)
+
     def __str__(self):
-        return f"{self.get_category_display()}: {self.category}"
+        return f"Location: {self.location or 'N/A'}, Activity: {self.activity or 'N/A'}, Type: {self.type_choices or 'N/A'}"
 
 
 class Post(models.Model):
@@ -105,6 +97,6 @@ class PostTag(models.Model):
         unique_together = ('post', 'tag')  # Composite primary key ensuring unique post-tag pairs
 
     def __str__(self):
-        return f"{self.post.title} - {self.tag.name}"
+        return f"{self.post.title} - {self.tag.location or self.tag.activity or self.tag.type}"
 
 
