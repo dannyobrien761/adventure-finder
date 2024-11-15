@@ -131,7 +131,13 @@ tags are tied to posts by PostTag junction table and offer clear filtering and d
 
 ### Bugs
 
-#### bug fix issues
+#### bug fix issues :
 
-- ##### django.template.loaders.filesystem.Loader: /workspace/adventure-finder/templates/base.html (Source does not exist)
- Django was looking for templates in wrong location, ran the server found the path djamgo was looking for the base.html file in and realized it was different : workspace/adventure-finder/adventure_finder/templates/base.html . I adjusted the TEMPLATES_DIR = os.path.join(BASE_DIR, 'adventure_finder', 'templates') and it solved the bug allowing django to find the base.html file in the app when it was extended in the index.html file.
+##### django.template.loaders.filesystem.Loader: /workspace/adventure-finder/templates/base.html (Source does not exist)
+  Django was looking for templates in wrong location, ran the server found the path djamgo was looking for the base.html file in and realized it was different : workspace/adventure-finder/adventure_finder/templates/base.html . I adjusted the TEMPLATES_DIR = os.path.join(BASE_DIR, 'adventure_finder', 'templates') and it solved the bug allowing django to find the base.html file in the app when it was extended in the index.html file.
+
+### references
+
+code for adventure_finder/templates/base.html taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/base.html))
+code for adventure_finder/static/css/style.css taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/style.css))
+code for adventure-finder/adventures/templates/adventures/index.html taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/index.html))
