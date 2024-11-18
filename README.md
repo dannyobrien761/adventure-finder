@@ -138,6 +138,14 @@ tags are tied to posts by PostTag junction table and offer clear filtering and d
 
 ### references
 
-code for adventure_finder/templates/base.html taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/base.html))
-code for adventure_finder/static/css/style.css taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/style.css))
-code for adventure-finder/adventures/templates/adventures/index.html taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/index.html))
+- code for adventure_finder/templates/base.html taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/base.- html))
+- code for adventure_finder/static/css/style.css taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/style.css))
+- code for adventure-finder/adventures/templates/adventures/index.html taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/index.html))
+- code for /workspace/adventure-finder/adventures/templates/adventures/post_detail.html taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/09_views_part2/01_building_a_blogpost_view/blog/templates/blog/post_detail.html))
+
+#### Images
+- Photo by <a href="https://unsplash.com/@julensan09?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Julentto Photography</a> on <a href="https://unsplash.com/photos/person-holding-blue-and-brown-map-CIuakYIjadc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
+- Photo by <a href="https://unsplash.com/@intothefab?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fabio Comparelli</a> on <a href="https://unsplash.com/photos/running-man-on-bridge-uq2E2V4LhCY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      
+      
