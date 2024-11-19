@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from .models import Post
+from .models import Post, PostTag
 
 
 # Create your views here.
@@ -27,8 +27,10 @@ def post_detail(request, slug):
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
 
+    tags = PostTag.objects.filter(post=post).select_related('tag')
+
     return render(
         request,
         "adventures/post_detail.html",
-        {"post": post},
+        {"post": post, "tags": tags},
     )

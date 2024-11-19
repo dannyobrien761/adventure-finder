@@ -29,6 +29,35 @@
             </div>
         </div>
     </div>
+
+    <div class="row mt-4">
+        <div class="col">
+            <h5>Tags:</h5>
+            <ul>
+                {% for post_tag in tags %}
+                    <li>
+                        {% if post_tag.tag.location %}
+                            <strong>Location:</strong> {{ post_tag.tag.location }}
+                        {% endif %}
+                        
+                        {% if post_tag.tag.activity %}
+                            <strong>Activity:</strong> {{ post_tag.tag.activity }}
+                        {% endif %}
+                        
+                        {% if post_tag.tag.type_choices %}
+                            <strong>Type:</strong> {{ post_tag.tag.type_choices }}
+                        {% endif %}
+                    </li>
+                {% empty %}
+                    <li>No tags available.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    </div>
+
 </div>
+
+
 
 {% endblock content %}
