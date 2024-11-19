@@ -145,6 +145,7 @@ tags are tied to posts by PostTag junction table and offer clear filtering and d
 
 - code for login.html [Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/11_authorisation/01_allauth/templates/account/login.html)
 -  code for logout.html [Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/11_authorisation/01_allauth/templates/account/logout.html)
+- code for signup.html 
 #### Images
 - Photo by <a href="https://unsplash.com/@julensan09?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Julentto Photography</a> on <a href="https://unsplash.com/photos/person-holding-blue-and-brown-map-CIuakYIjadc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
