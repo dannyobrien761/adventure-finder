@@ -74,7 +74,27 @@
         {% else %}
         <p class="text-end m-3">You are not logged in</p>
         {% endif %}
+            <!-- Filter Tags Links -->
+            <div class="row mb-3">
+                <div class="col-12">
+                    <form method="POST" action="{% url 'post_list' %}">
+                        {% csrf_token %}
+                        <div class="d-flex flex-wrap">
+                            <!-- Example tag links or dropdown -->
+                            <a href="{% url 'post_list' %}" class="btn btn-outline-primary me-2">All Posts</a>
+                            <button type="submit" name="location" value="europe" class="btn btn-outline-primary me-2">Europe</button>
+                            <button type="submit" name="activity" value="hiking" class="btn btn-outline-primary me-2">Hiking</button>
+                            <button type="submit" name="type" value="blog" class="btn btn-outline-primary me-2">Blog</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
+
+
+
+
+         <!-- Main Content Block -->
         {% block content %}
         <!-- Content Goes here -->
          <p>list of paginated posts</p>
@@ -84,6 +104,9 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
+        <div class="container"></div>
+            <span class="text-muted">© 2024 Adventure Finder</span>
+        </div>
         <p class="m-0 text-center text-white">Made by danny ob</p>
         <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>
