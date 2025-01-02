@@ -34,18 +34,18 @@
         <div class="col">
             <h5>Tags:</h5>
             <ul>
-                {% for post_tag in tags %}
+                {% for tag in tags %}
                     <li>
-                        {% if post_tag.tag.location %}
-                            <strong>Location:</strong> {{ post_tag.tag.location }}
+                        {% if tag.location %}
+                            <strong>Location:</strong> {{ tag.location }}
                         {% endif %}
                         
-                        {% if post_tag.tag.activity %}
-                            <strong>Activity:</strong> {{ post_tag.tag.activity }}
+                        {% if tag.activity %}
+                            <strong>Activity:</strong> {{ tag.activity }}
                         {% endif %}
                         
-                        {% if post_tag.tag.type_choices %}
-                            <strong>Type:</strong> {{ post_tag.tag.type_choices }}
+                        {% if tag.type_choices %}
+                            <strong>Type:</strong> {{ tag.type_choices }}
                         {% endif %}
                     </li>
                 {% empty %}
@@ -56,6 +56,27 @@
     </div>
     </div>
 
+</div>
+
+<div class="container mt-5">
+    <h3>Similar Posts</h3>
+    <div class="row">
+        {% for related_post in related_posts %}
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <a href="{% url 'post_detail' related_post.slug %}" class="post-link">
+                        <h5 class="card-title">{{ related_post.title }}</h5>
+                    </a>
+                    <p class="card-text">{{ related_post.excerpt|truncatewords:20 }}</p>
+                    <p class="text-muted">By {{ related_post.author }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No related posts found.</p>
+        {% endfor %}
+    </div>
 </div>
 
 

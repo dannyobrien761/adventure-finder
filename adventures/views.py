@@ -64,11 +64,28 @@ def post_detail(request, slug):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
 
-        tags = PostTag.objects.filter(post=post).select_related('tag')
+         #tags = PostTag.objects.filter(post=post).select_related('tag')
+
+         # Get the tags associated with the current post
+        tags = post.tags.all()  # This will get only the tags related to the current post
+        print(tags) 
+        # Now filter posts based on tagss, excluding the current post
+        #related_posts = Post.objects.filter(tags__in=tags).exclude(id=post.id)[:4]
+
+        related_posts = Post.objects.exclude(id=post.id)[:4]
+        
+        
+        print(related_posts)  # Debugging: Check if related posts are being retrieved
 
         return render(
         request,
         "adventures/post_detail.html",
-        {"post": post, "tags": tags},
+       {
+
+            "post": post,
+            "tags": tags,
+            "related_posts": related_posts,
+
+        },
     )
 
