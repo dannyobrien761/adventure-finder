@@ -74,6 +74,7 @@
         {% else %}
         <p class="text-end m-3">You are not logged in</p>
         {% endif %}
+        {% if request.path == home_url %}
             <!-- Filter Tags Links -->
             <div class="container my-4">
                 <form method="get" action="{% url 'home' %}">
@@ -125,7 +126,7 @@
                     </div>
                 </form>
             </div>
-
+        {% endif %}
 
 
 
