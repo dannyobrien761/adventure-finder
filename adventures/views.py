@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from .models import Post, PostTag, Tag
+from .models import Post, PostTag, Tag, Comment, Author
 from django.core.paginator import Paginator
+from .forms import CommentForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -70,6 +72,25 @@ def post_detail(request, slug):
         comments = post.comments.all().order_by("-created_at")
         comment_count = post.comments.filter(approved=True).count()
 
+        if request.method == "POST": 
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                # Assign user and author
+                comment.user = request.user  # Set the user field
+                # Assign or create the Author instance for the user
+                author, created = Author.objects.get_or_create(user=request.user)
+                comment.author = author
+                
+                comment.post = post
+                comment.save()
+                messages.add_message(
+                    request, messages.SUCCESS,
+                    'Comment submitted and awaiting approval'
+            )
+
+        comment_form = CommentForm()
+
          #tags = PostTag.objects.filter(post=post).select_related('tag')
 
          # Get the tags associated with the current post
@@ -93,6 +114,7 @@ def post_detail(request, slug):
             "related_posts": related_posts,
             "comments": comments,
             "comment_count": comment_count,
+           "comment_form": comment_form,
         },
     )
 
