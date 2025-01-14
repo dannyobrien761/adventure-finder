@@ -102,7 +102,12 @@ the acceptance criteria was formulated  from the card conversation and confirmat
   superuser created for django admin CRUD operations 
 
 
-#### comment feature
+### comment feature
+I took the origional code for the comment feature from the code institute step by step code star project and then modified it in the below ways to suit my project and its outcomes:
+![code institute- codeStar project](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FSD101_WTS+4/courseware/713441aba05441dfb3a7cf04f3268b3f/21a16093c0084895a6073422447c3f7d/)
+
+
+
 class Comment(models.Model):
   author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
@@ -117,21 +122,34 @@ approved = models.BooleanField(default=False)
 ensures that new comments are unapproved by default, making it easy to manage comment moderation.
 This setup will let you handle comment approval efficiently, with all new comments defaulting to unapproved.
 
-##### comment editing
+#### comment editing
 
 changed this :
+``` html
 {% if user.is_authenticated and comment.author == user %}
             <button class="btn btn-edit"
                 comment_id="{{ comment.id }}">Edit</button>
             {% endif %}
-
+```
 to this :
-{% if user.is_authenticated and (comment.user == user or comment.author.user == user) %}
-            <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
-            {% endif %}
-
+``` html
+% if user.is_authenticated and comment.user == user %}
+          <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+          {% elif user.is_authenticated and comment.author and comment.author.user == user %}
+          <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+          {% endif %}
+``` 
 to allow users and author to comment and edit 
 
+
+changed : const commentText = document.getElementById("id_body");
+to : const commentText = document.getElementById("id_content");  // Change to match the content field
+for the commentForm in forms.py :
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('content',)
 #### Tag feature
 
 the tag feature allows authorized users ie "blog authors" to create tags for individual posts. The Tag model defines "Choices" for LOCATION, ACTIVITIES, and TYPE with separate choice fields that lets you to select each attribute individually for a desired post.
