@@ -117,6 +117,21 @@ approved = models.BooleanField(default=False)
 ensures that new comments are unapproved by default, making it easy to manage comment moderation.
 This setup will let you handle comment approval efficiently, with all new comments defaulting to unapproved.
 
+##### comment editing
+
+changed this :
+{% if user.is_authenticated and comment.author == user %}
+            <button class="btn btn-edit"
+                comment_id="{{ comment.id }}">Edit</button>
+            {% endif %}
+
+to this :
+{% if user.is_authenticated and (comment.user == user or comment.author.user == user) %}
+            <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+            {% endif %}
+
+to allow users and author to comment and edit 
+
 #### Tag feature
 
 the tag feature allows authorized users ie "blog authors" to create tags for individual posts. The Tag model defines "Choices" for LOCATION, ACTIVITIES, and TYPE with separate choice fields that lets you to select each attribute individually for a desired post.

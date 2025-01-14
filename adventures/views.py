@@ -1,12 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from .models import Post, PostTag, Tag, Comment, Author
 from django.core.paginator import Paginator
 from .forms import CommentForm
 from django.contrib import messages
-from django.shortcuts import render
 from .models import About
 from .forms import CollaborateForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -141,3 +141,31 @@ def about_me(request):
             "collaborate_form": collaborate_form
         },
     )
+
+
+def comment_edit(request, slug, comment_id):
+    """
+    View to edit comments. Allows both authors and regular users to edit their own comments.
+    """
+    if request.method == "POST":
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comment = get_object_or_404(Comment, pk=comment_id)
+
+        # Ensure the user is the comment owner
+        if comment.user != request.user:
+            messages.add_message(request, messages.ERROR, "You are not authorized to edit this comment.")
+            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+        comment_form = CommentForm(data=request.POST, instance=comment)
+
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.approved = False  # Reset approval status after edit
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment updated successfully and is pending approval.')
+        else:
+            messages.add_message(request, messages.ERROR, 'Failed to update the comment. Please check the form.')
+
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
