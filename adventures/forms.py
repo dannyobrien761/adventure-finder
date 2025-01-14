@@ -7,7 +7,7 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('content',)
-
+    
 
 class CollaborateForm(forms.ModelForm):
     class Meta:
