@@ -159,6 +159,11 @@ the tag feature allows authorized users ie "blog authors" to create tags for ind
 - **User-Friendly:** If users are selecting these attributes in the admin interface, it’s straightforward, as each field has defined options.
 - **Nullability**: I set blank=True and null=True to make each field optional. This way, a tag could specify only a location, only an activity, or all three.
 
+
+#### storing images and videos in cloudinary
+
+I follewed the step by step codestar project to achieve the cloudinary integration with my app. Found here :
+!(cloudinary setup)[https://github.com/Code-Institute-Solutions/blog/tree/main/14_where_to_put_things/01_storing_images_in_cloudinary]
 ##### Conclusion:
 tags are tied to posts by PostTag junction table and offer clear filtering and display options detailing location of post, activity featured and the type of post in my adventures app.
 
