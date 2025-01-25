@@ -7,6 +7,7 @@ from django.contrib import messages
 from .models import About
 from .forms import CollaborateForm
 from django.http import HttpResponseRedirect
+from django.db.models import Count, Q
 
 # Create your views here.
 
@@ -71,6 +72,28 @@ def post_detail(request, slug):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
 
+        # Get the PostTag objects for the current post
+        post_tags = PostTag.objects.filter(post=post).select_related('tag')
+        print(post_tags)
+
+        # Extract the Tag objects (you don't need tag.id)
+        tags = [post_tag.tag for post_tag in post_tags]
+        print(f"Tags: {tags}")
+
+        # Fetch related posts based on shared tags
+        related_posts = (
+            Post.objects.filter(posttag__tag__in=tags)  # Use tag objects directly for matching
+            .exclude(id=post.id)  # Exclude the current post
+            #.distinct()  # Ensure distinct results
+            .order_by('-created_on')  # Optionally order the posts
+        )[:4]  # Limit the results to 4
+
+        print(f"Related Posts: {related_posts}")
+        print(f"Tags of the current post: {tags}")
+
+
+        
+        
          # comments
         comments = post.comments.all().order_by("-created_at")
         comment_count = post.comments.filter(approved=True).count()
@@ -94,19 +117,7 @@ def post_detail(request, slug):
 
         comment_form = CommentForm()
 
-         #tags = PostTag.objects.filter(post=post).select_related('tag')
-
-         # Get the tags associated with the current post
-        tags = post.tags.all()  # This will get only the tags related to the current post
-        print(tags) 
-        # Now filter posts based on tagss, excluding the current post
-        #related_posts = Post.objects.filter(tags__in=tags).exclude(id=post.id)[:4]
-
-        related_posts = Post.objects.exclude(id=post.id)[:4]
-        
-        
-        print(related_posts)  # Debugging: Check if related posts are being retrieved
-
+       
         return render(
         request,
         "adventures/post_detail.html",
@@ -114,6 +125,7 @@ def post_detail(request, slug):
 
             "post": post,
             "tags": tags,
+            "post_tags": post_tags,
             "related_posts": related_posts,
             "comments": comments,
             "comment_count": comment_count,

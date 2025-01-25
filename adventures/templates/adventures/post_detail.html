@@ -23,6 +23,51 @@
         </div>
     </div>
 </div>
+<p>{{ post_tags }}</p>  <!-- This will display the contents of post_tags -->
+
+<div class="row mt-4">
+  <div class="col">
+      <h5>Tags:</h5>
+     <!-- <ul>
+          {% for post_tag in post_tags %}
+              <li>
+                  {% with post_tag.tag as tag %}
+                      {% if tag.location %}
+                          <strong>Location:</strong> {{ tag.location }}
+                      {% endif %}
+                      {% if tag.activity %}
+                          <strong>Activity:</strong> {{ tag.activity }}
+                      {% endif %}
+                      {% if tag.type_choices %}
+                          <strong>Type:</strong> {{ tag.type_choices }}
+                      {% endif %}
+                  {% endwith %}
+              </li>
+          {% empty %}
+              <li>No tags available.</li>
+          {% endfor %}
+      </ul> -->
+      <ul>
+        {% for post_tag in post_tags %}
+            <li>
+                {% with post_tag.tag as tag %}
+                    {% if tag.location %}
+                        <strong>Location:</strong> {{ tag.location }}
+                    {% endif %}
+                    {% if tag.activity %}
+                        <strong>Activity:</strong> {{ tag.activity }}
+                    {% endif %}
+                    {% if tag.type_choices %}
+                        <strong>Type:</strong> {{ tag.type_choices }}
+                    {% endif %}
+                {% endwith %}
+            </li>
+        {% empty %}
+            <li>No tags available.</li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>
 
 <div class="container">
     <div class="row">
@@ -109,6 +154,28 @@
   </div>
 </div>
 
+<div class="container mt-5">
+  <h3>Similar Posts</h3>
+  <div class="row">
+      {% for related_post in related_posts %}
+      <div class="col-md-3">
+          <div class="card mb-4">
+              <div class="card-body">
+                  <a href="{% url 'post_detail' related_post.slug %}" class="post-link">
+                      <h5 class="card-title">{{ related_post.title }}</h5>
+                  </a>
+                  <p class="card-text">{{ related_post.excerpt|truncatewords:20 }}</p>
+                  <p class="text-muted">By {{ related_post.author }}</p>
+              </div>
+          </div>
+      </div>
+      {% empty %}
+      <p>No related posts found.</p>
+      {% endfor %}
+  </div>
+</div>
+<p>Related posts count: {{ related_posts.count }}</p>
+
 <!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1"
   aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -131,54 +198,10 @@
           btn-danger">Delete</a>
       </div>
 
- <div class="row mt-4">
-        <div class="col">
-            <h5>Tags:</h5>
-            <ul>
-                {% for tag in tags %}
-                    <li>
-                        {% if tag.location %}
-                            <strong>Location:</strong> {{ tag.location }}
-                        {% endif %}
-                        
-                        {% if tag.activity %}
-                            <strong>Activity:</strong> {{ tag.activity }}
-                        {% endif %}
-                        
-                        {% if tag.type_choices %}
-                            <strong>Type:</strong> {{ tag.type_choices }}
-                        {% endif %}
-                    </li>
-                {% empty %}
-                    <li>No tags available.</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-    </div>
 
-</div>
 
-<div class="container mt-5">
-    <h3>Similar Posts</h3>
-    <div class="row">
-        {% for related_post in related_posts %}
-        <div class="col-md-3">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <a href="{% url 'post_detail' related_post.slug %}" class="post-link">
-                        <h5 class="card-title">{{ related_post.title }}</h5>
-                    </a>
-                    <p class="card-text">{{ related_post.excerpt|truncatewords:20 }}</p>
-                    <p class="text-muted">By {{ related_post.author }}</p>
-                </div>
-            </div>
-        </div>
-        {% empty %}
-        <p>No related posts found.</p>
-        {% endfor %}
-    </div>
-</div>
+
+
 {% endblock content %}
 
 {% block extras %}
