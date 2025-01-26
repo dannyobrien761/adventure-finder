@@ -7,9 +7,8 @@ from django.contrib import messages
 from .models import About
 from .forms import CollaborateForm
 from django.http import HttpResponseRedirect
-from django.db.models import Count, Q
 
-# Create your views here.
+
 
 def post_list(request):
     """
@@ -31,9 +30,9 @@ def post_list(request):
     if post_type:
         posts = posts.filter(tags__type_choices=post_type)
 
-    #queryset = queryset.distinct()  # Avoid duplicate posts if multiple tags overlap
-
-    paginator = Paginator(posts, 6)  # Paginate with 6 posts per page
+    
+    # 6 posts per page
+    paginator = Paginator(posts, 6)  
     page = request.GET.get('page')
     post_list = paginator.get_page(page)
 
@@ -72,14 +71,13 @@ def post_detail(request, slug):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
 
-        # Get the PostTag objects for the current post
+        # Gets the PostTag objects for the current post
         post_tags = PostTag.objects.filter(post=post).select_related('tag')
         print(post_tags)
 
-        # Extract the Tag objects (you don't need tag.id)
+        # Extract the Tag objects
         tags = [post_tag.tag for post_tag in post_tags]
-        print(f"Tags: {tags}")
-
+    
         # Fetch related posts based on shared tags
         related_posts = (
             Post.objects.filter(posttag__tag__in=tags)  # Use tag objects directly for matching
@@ -88,12 +86,7 @@ def post_detail(request, slug):
             .order_by('-created_on')  # Optionally order the posts
         )[:4]  # Limit the results to 4
 
-        print(f"Related Posts: {related_posts}")
-        print(f"Tags of the current post: {tags}")
 
-
-        
-        
          # comments
         comments = post.comments.all().order_by("-created_at")
         comment_count = post.comments.filter(approved=True).count()
@@ -132,7 +125,7 @@ def post_detail(request, slug):
            "comment_form": comment_form,
         },
     )
-
+#about page view
 def about_me(request):
     if request.method == "POST":
         collaborate_form = CollaborateForm(data=request.POST)
@@ -164,7 +157,7 @@ def comment_edit(request, slug, comment_id):
         post = get_object_or_404(queryset, slug=slug)
         comment = get_object_or_404(Comment, pk=comment_id)
 
-        # Ensure the user is the comment owner
+        # Ensures the user is the comment owner
         if comment.user != request.user:
             messages.add_message(request, messages.ERROR, "You are not authorized to edit this comment.")
             return HttpResponseRedirect(reverse('post_detail', args=[slug]))
@@ -174,7 +167,7 @@ def comment_edit(request, slug, comment_id):
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.post = post
-            comment.approved = False  # Reset approval status after edit
+            comment.approved = False 
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment updated successfully and is pending approval.')
         else:
