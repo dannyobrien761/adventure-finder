@@ -1,49 +1,5 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
+#Adventure Finder 
 Welcome Danny O'Brien,
-
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
-
-### Connecting your Mongo database
-
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
-
 
 
 
@@ -70,10 +26,13 @@ Adventure Finder is a vlog and blog app that allows users to  easily find advent
 ### <div id="strategy">Strategy</div>
 Determining the best approach meant studying the needs of potential users. This included similar sites research and taking inspiration
 
+### <div id="db">DataBase structure</div>
+![db schema](../adventure-finder/adventure_finder/static/images/ERD-v3.png)
+
 #### Agile
 The Agile methodology was used to plan the project. Github was used as the tool to demonstrate this.  Issues were used to create User Stories with custom templates ([Link to Kanban board](https://github.com/users/dannyobrien761/projects/1/views/1)). 
 
-#### Good Design practice
+### <div id="design">Design practice</div>
 I separated the urls.py files into separate apps because, as stated, this follows the Django design philosophy of loose coupling. 
 ##### User Stories 
 Issues were used to create User Stories with custom templates for admin and user. I added the acceptance criteria and the tasks so I can track my work effectively. Once I completed a User Story I would move it from `in progress` to `completed`. 
@@ -196,7 +155,7 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('content',)
-#### Tag feature
+### Tag feature(CUSTOM)
 this is one of my origional custom models for this projet. 
 the tag feature allows authorized users ie "blog authors" to create tags for individual posts. The Tag model defines "Choices" for LOCATION, ACTIVITIES, and TYPE with separate choice fields that lets you to select each attribute individually for a desired post.
 
@@ -207,8 +166,47 @@ the tag feature allows authorized users ie "blog authors" to create tags for ind
 -**USER Experience**:
 it helps categorize blog posts and allows for a better user experience as users can filter for specific locations or activities they are interested in.
 
-#### similar post suggetstions
+### Tag Listing Feature (CUSTOM)
+
+The **Tag Listing** feature displays all tags associated with a specific post on the `post_detail.html` page. This allows users to quickly identify the key topics, locations, or activities covered in the post.
+
+#### Custom Code Highlights
+
+1. **Tag Retrieval**:  
+   - Utilizes the `PostTag` model to fetch tags related to the current post.
+   - Uses Django's ORM to query and join the `Post` and `Tag` models for efficient data retrieval.
+
+2. **Dynamic Rendering**:  
+   - Passes the retrieved tags to the template and iterates through them to display each tag as a list item.
+   - Provides a fallback message (`No tags available`) if no tags are associated with the post.
+
+3. **Seamless Integration**:  
+   - Ensures the tags are visually presented in an organized format (e.g., as a list or inline links) to enhance the user experience and improve navigation to related topics.
+
+This feature enables readers to easily understand the themes of the post and discover related content.
+
+
+### Related Posts Feature (CUSTOM)
 there is a similar posts suggestion panel at the bottom of each post entry, this allows for easy navigation between posts of similar topics and keeps the interest of the users on the site. 
+
+
+
+The **Related Posts** feature enhances user engagement by displaying posts that share common tags with the current post. It identifies related posts based on shared tags (e.g., Location, Activity, or Type). The logic ensures that users can explore similar content effortlessly.
+
+#### Custom Code Highlights
+
+1. **Tag Matching Logic**:  
+   - Retrieves tags associated with the current post using a many-to-many relationship (`PostTag`).
+   - Filters other posts containing at least one of the same tags, excluding the current post.
+
+2. **Efficient Querying**:  
+   - Uses Django ORM to dynamically fetch related posts with optimized filtering and ordering (`filter()` and `exclude()`).
+
+3. **Display**:  
+   - Passes the fetched related posts to the template for a seamless frontend display in a grid layout, or shows a fallback message if no related posts are found. 
+
+This feature makes content discovery intuitive and improves the overall user experience.
+
 #### storing images and videos in cloudinary
 
 I follewed the step by step codestar project to achieve the cloudinary integration with my app. Found here :
