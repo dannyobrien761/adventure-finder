@@ -9,10 +9,10 @@ Welcome Danny O'Brien,
   - <a href="#strategy">Strategy</a>
   - <a href="#db">Database structure</a>
   - <a href="#design">Design</a>
-- <a href="#testing">Testing</a>
-- <a href="#bugs">Bugs</a>
 - <a href="#features">Existing Features</a>
 - <a href="#f_features">Features left to Implement</a>
+- <a href="#testing">Testing</a>
+- <a href="#bugs">Bugs</a>
 - <a href="#technology">Languages, Technologies & Libraries</a>
 - <a href="#credits">Credits</a>
 - <a href="#deployment">Deployment</a>
@@ -27,7 +27,7 @@ Adventure Finder is a vlog and blog app that allows users to  easily find advent
 Determining the best approach meant studying the needs of potential users. This included similar sites research and taking inspiration
 
 ### <div id="db">DataBase structure</div>
-![db schema](../adventure-finder/adventure_finder/static/images/ERD-v3.png)
+![db schema](adventure_finder/static/images/ERD-v3.png)
 
 #### Agile
 The Agile methodology was used to plan the project. Github was used as the tool to demonstrate this.  Issues were used to create User Stories with custom templates ([Link to Kanban board](https://github.com/users/dannyobrien761/projects/1/views/1)). 
@@ -97,13 +97,9 @@ the acceptance criteria was formulated  from the card conversation and confirmat
 - **As a user,** I want the site to load quickly and efficiently so that I have a smooth browsing experience.
 - **As a user,** I want to access the site from my mobile device and still have a great experience so that I can browse on the go.
 
-## Future Enhancements
-- **As a user who frequently visits the site,** I want to bookmark my favorite posts so that I can return to them easily.
-- **As a user,** I want to receive personalized recommendations based on my past activity so that I discover content relevant to my interests.
-- **As a user,** I want to join groups or forums with other community members so that I can share experiences and plan adventures together.
-- **As a user,** I want to follow specific authors or tags so that I am notified about new content in my areas of interest.
+### sitemap
 
-
+![sitemap](adventure-finder\adventure_finder\static\images\sitemap-pp4.PNG)
 
 # Features
 
@@ -213,6 +209,18 @@ I follewed the step by step codestar project to achieve the cloudinary integrati
 !(cloudinary setup)[https://github.com/Code-Institute-Solutions/blog/tree/main/14_where_to_put_things/01_storing_images_in_cloudinary]
 ##### Conclusion:
 tags are tied to posts by PostTag junction table and offer clear filtering and display options detailing location of post, activity featured and the type of post in my adventures app.
+
+
+## <div id="f_features">features left to implement</div>
+## Future Enhancements
+- **As a user who frequently visits the site,** I want to bookmark my favorite posts so that I can return to them easily.
+- **As a user,** I want to receive personalized recommendations based on my past activity so that I discover content relevant to my interests.
+- **As a user,** I want to join groups or forums with other community members so that I can share experiences and plan adventures together.
+- **As a user,** I want to follow specific authors or tags so that I am notified about new content in my areas of interest.
+ 
+- I would like to add a author filter and filter for posts for specific authors.
+- add a page for authors bios
+
 
 # testing
 
