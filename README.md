@@ -99,8 +99,9 @@ the acceptance criteria was formulated  from the card conversation and confirmat
 
 ### sitemap
 
-![sitemap](adventure-finder\adventure_finder\static\images\sitemap-pp4.PNG)
-
+![sitemap](adventure_finder/static/images/sitemap-pp4.PNG)
+### wireframes
+![sitemap](adventure_finder/static/images/wireframe-pp4.PNG)
 # Features
 
 ### comment feature
@@ -330,6 +331,26 @@ Evaluates user experience to ensure the application is intuitive.
 ##### django.template.loaders.filesystem.Loader: /workspace/adventure-finder/templates/base.html (Source does not exist)
   Django was looking for templates in wrong location, ran the server found the path djamgo was looking for the base.html file in and realized it was different : workspace/adventure-finder/adventure_finder/templates/base.html . I adjusted the TEMPLATES_DIR = os.path.join(BASE_DIR, 'adventure_finder', 'templates') and it solved the bug allowing django to find the base.html file in the app when it was extended in the index.html file.
 
+## <div id="deployment">Deployment</div>
+
+ ## Deployment
+
+The site was deployed to Heroku.
+
+### Steps:
+
+-. Install dependencies: `gunicorn`, `whitenoise`
+- Add `Procfile` and update `settings.py` for production -set debug to false
+- downloaded and installed the Heroku CLI for debugging issues
+- Push the project to Git, link heroku app to github repository
+- Set necessary environment variables on the Heroku dashboard, secret key etc.
+- any database migrations restart the Heroku dyno
+- 
+- Access the live app at ``
+
+
+
+## <div id="credits">Credits</div>
 ### references
 
 - code for adventure_finder/templates/base.html taken from ([Code-Institute-Solutions blog](https://github.com/Code-Institute-Solutions/blog/blob/main/08_templates/01_base_template/base.- html))
@@ -344,5 +365,4 @@ Evaluates user experience to ensure the application is intuitive.
 - Photo by <a href="https://unsplash.com/@julensan09?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Julentto Photography</a> on <a href="https://unsplash.com/photos/person-holding-blue-and-brown-map-CIuakYIjadc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 - Photo by <a href="https://unsplash.com/@intothefab?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fabio Comparelli</a> on <a href="https://unsplash.com/photos/running-man-on-bridge-uq2E2V4LhCY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-      
       
