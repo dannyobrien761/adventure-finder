@@ -1,16 +1,40 @@
 body {
-    background-color: #F9FAFC;
+    background-color: #83C0CF;
 }
+
+/*navbar styling*/
 
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: #4F6A6E;
 }
 
-.red-o {
-    color: #E84610;
+.custom-navbar {
+    background-color:#D2C0A7; 
+    color: #fff;
+    padding: 0.75rem 1rem;
+}
+
+.custom-navbar .nav-link,
+.custom-navbar .navbar-brand {
+    color: #fff;
+    font-weight: 600;
+}
+
+.custom-navbar .nav-link:hover {
+    color:  #83C0CF;
+    text-decoration: underline;
+}
+
+.custom-navbar .navbar-toggler {
+    border-color:  #83C0CF;
+}
+
+
+.d-o {
+    color: #098D8A;
 }
 
 .thin {
@@ -26,7 +50,7 @@ body {
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #83C0CF;
 }
 
 .card {
@@ -57,6 +81,7 @@ body {
     text-transform: uppercase;
 }
 
+/*post-detail.html*/
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -67,7 +92,7 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: #D2C0A7;
     color: white;
     position: relative;
 }
@@ -84,7 +109,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background:  #D2C0A7;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -93,12 +118,12 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: #fff;
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #098D8A;
 }
 
 .post-title {
@@ -108,7 +133,8 @@ body {
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: #098D8A;
+    font-weight: 600;
 }
 
 .btn-signup,
@@ -158,4 +184,76 @@ body {
 
 .approval {
     color: rgb(222, 146, 168);
+}
+
+/*filter-post btns*/
+.btn-filter {
+    background-color: #098D8A; /* .light-bg */
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-filter:hover {
+    background-color: #D6DFDF;
+}
+
+.btn-reset {
+    background-color: #D2C0A7; /* .brand */
+    color: #333;
+    border: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.btn-reset:hover {
+    background-color: #D6DFDF;
+    color: #222;
+}
+
+/* Alerts / Messages */
+.alert {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: #098D8A;
+}
+
+.alert-success {
+    background-color: #098D8A;
+    color: #fff;
+}
+
+.alert-info {
+    background-color: #83C0CF;
+    color: #fff;
+}
+
+.alert-warning {
+    background-color: #D2C0A7;
+    color: #222;
+}
+
+.alert-danger {
+    background-color: #E84610;
+    color: #fff;
+}
+
+.btn-close {
+    color: #fff;
+    opacity: 0.8;
+}
+
+.btn-close:hover {
+    opacity: 1;
 }

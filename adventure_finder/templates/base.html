@@ -33,9 +33,9 @@
 <body class="d-flex flex-column h-100 main-bg">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">A<span class="red-o">d</span>venture<span
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">A<span class="d-o">d</span>venture<span
                         class="thin">|finder</span></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,6 @@
             </div>
         </div>
     </nav>
-
         <!-- displaying Django messages -->
     <div class="container">
         <div class="row">
@@ -140,8 +139,8 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary">Filter</button>
-                            <a href="{% url 'home' %}" class="btn btn-secondary">Reset</a>
+                            <button type="submit" class="btn btn-filter">Filter</button>
+                            <a href="{% url 'home' %}" class="btn btn-reset">Reset</a>
                         </div>
                     </div>
                 </form>
