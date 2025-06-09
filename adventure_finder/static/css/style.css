@@ -50,7 +50,8 @@ body {
 }
 
 .main-bg {
-    background-color: #83C0CF;
+   /* background-color: #83C0CF;*/
+    background-color: rgba(113, 169, 183, 1)
 }
 
 .card {
