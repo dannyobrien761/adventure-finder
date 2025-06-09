@@ -102,16 +102,6 @@ class PostTag(models.Model):
         return f"{self.post.title} - {self.tag.location or self.tag.activity or self.tag.type}"
 
 
-
-class About(models.Model):
-    title = models.CharField(max_length=200)
-    updated_on = models.DateTimeField(auto_now=True)
-    content = models.TextField()
-
-    def __str__(self):
-        return self.title
-
-
 class CollaborateRequest(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Author
 from .models import Post
 from .models import Comment, Tag, PostTag
-from .models import About, CollaborateRequest
+from .models import CollaborateRequest
 from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Post)
@@ -20,12 +20,6 @@ admin.site.register(Tag)
 admin.site.register(PostTag)
 admin.site.register(Author)
 admin.site.register(Comment)
-
-
-# Register about page models
-@admin.register(About)
-class AboutAdmin(SummernoteModelAdmin):
-    summernote_fields = ('content',)
 
 
 @admin.register(CollaborateRequest)

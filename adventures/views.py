@@ -4,7 +4,6 @@ from .models import Post, PostTag, Tag, Comment, Author
 from django.core.paginator import Paginator
 from .forms import CommentForm
 from django.contrib import messages
-from .models import About
 from .forms import CollaborateForm
 from django.http import HttpResponseRedirect
 
@@ -125,24 +124,22 @@ def post_detail(request, slug):
            "comment_form": comment_form,
         },
     )
-#about page view
+
+
+# about page view
 def about_me(request):
     if request.method == "POST":
         collaborate_form = CollaborateForm(data=request.POST)
         if collaborate_form.is_valid():
             collaborate_form.save()
-            messages.add_message(request, messages.SUCCESS, "Collaboration request received!")
-    
-    
-
-    about = About.objects.all().order_by('-updated_on').first()
-    collaborate_form = CollaborateForm()
+            messages.success(request, "Collaboration request received!")
+    else:
+        collaborate_form = CollaborateForm()
 
     return render(
         request,
         "adventures/about.html",
         {
-            "about": about,
             "collaborate_form": collaborate_form
         },
     )
@@ -174,7 +171,6 @@ def comment_edit(request, slug, comment_id):
             messages.add_message(request, messages.ERROR, 'Failed to update the comment. Please check the form.')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-
 
 
 def comment_delete(request, slug, comment_id):
