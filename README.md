@@ -29,8 +29,28 @@ Determining the best approach meant studying the needs of potential users. This 
 ### <div id="db">DataBase structure</div>
 ![db schema](adventure_finder/static/images/ERD-v3.png)
 
-#### Agile
-The Agile methodology was used to plan the project. Github was used as the tool to demonstrate this.  Issues were used to create User Stories with custom templates ([Link to Kanban board](https://github.com/users/dannyobrien761/projects/1/views/1)). 
+### Agile
+The Agile methodology was used to plan the project. Github projects was used as the tool to demonstrate this.  Issues were used to create User Stories with custom templates ([Link to Kanban board](https://github.com/users/dannyobrien761/projects/1/views/1)). 
+
+You can see from the kanban board link and the user stories individual links below the implementation of prioritising user stories within the agile tool as I have set labels on the user stories indicating high, medium or low priority (also outlined below)
+#### Epics and User Stories Mapping
+ Below you can see the implementation of mapping user stories to epics within the agile process
+- **User Onboarding**  
+  - US04: user/member access (High) [https://github.com/dannyobrien761/adventure-finder/issues/4]
+  - US06: First-time visitor finds info easily (High) [https://github.com/dannyobrien761/adventure-finder/issues/6]
+
+- **Content Discovery**  
+  - US01: posts filter (Medium)  - [https://github.com/dannyobrien761/adventure-finder/issues/1]
+  - US05: Suggested similar posts (Medium) [https://github.com/dannyobrien761/adventure-finder/issues/5]
+  - US#2: tag system for posts- tag model building (Medium) [https://github.com/dannyobrien761/adventure-finder/issues/2#issue-2624375592]
+
+
+- **User Interaction**  
+  - US#7: Login and comment, like (High)  
+  [https://github.com/dannyobrien761/adventure-finder/issues/7]
+
+- **Admin Management**  
+  - US07: Review and approve comments (Medium)  [https://github.com/dannyobrien761/adventure-finder/issues/3]
 
 ### <div id="design">Design practice</div>
 I separated the urls.py files into separate apps because, as stated, this follows the Django design philosophy of loose coupling. 
@@ -379,3 +399,6 @@ The site was deployed following the below steps:
 
 - Photo by <a href="https://unsplash.com/@intothefab?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fabio Comparelli</a> on <a href="https://unsplash.com/photos/running-man-on-bridge-uq2E2V4LhCY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
       
+
+
+[def]: https://github.com/dannyobrien761/adventure-finder/issues/7
