@@ -97,11 +97,16 @@ the acceptance criteria was formulated  from the card conversation and confirmat
 - **As a user,** I want the site to load quickly and efficiently so that I have a smooth browsing experience.
 - **As a user,** I want to access the site from my mobile device and still have a great experience so that I can browse on the go.
 
-### sitemap
+### Design choices
+#### sitemap
 
 ![sitemap](adventure_finder/static/images/sitemap-pp4.PNG)
-### wireframes
+#### wireframes
 ![sitemap](adventure_finder/static/images/wireframe-pp4.PNG)
+
+#### colors
+![figma-color-selection](adventure_finder\static\images\design-colours.png)
+
 # Features
 
 ### comment feature
@@ -333,19 +338,27 @@ Evaluates user experience to ensure the application is intuitive.
 
 ## <div id="deployment">Deployment</div>
 
- ## Deployment
 
-The site was deployed to Heroku.
+The site was deployed following the below steps:
 
-### Steps:
+### Steps locally:
 
--. Install dependencies: `gunicorn`, `whitenoise`
-- Add `Procfile` and update `settings.py` for production -set debug to false
+- Install Dependencies: pip install -r requirements.txt
+- Apply Migrations: python manage.py migrate
+- python manage.py runserver- Visit: http://127.0.0.1:8000
+### Steps on heroku:
+- Install dependencies: `gunicorn`, `whitenoise`
+- Update requirements.txt: pip freeze > requirements.txt
+- Add `Procfile` : add  web: gunicorn adventure_finder.wsgi
+- Update `settings.py` for production -set debug to false
+- Allow Heroku host: ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+- Configure static files for Whitenoise: MIDDLEWARE.insert(1, 'whitenoise.middleware. WhiteNoiseMiddleware'), STATIC_ROOT = BASE_DIR / 'staticfiles'
 - downloaded and installed the Heroku CLI for debugging issues
-- Push the project to Git, link heroku app to github repository
+- Commit your changes:git add . , git commit -m "Prepare for Heroku deployment"
+- Push the project to Git
+- create heroku app and link heroku app to github repository
 - Set necessary environment variables on the Heroku dashboard, secret key etc.
 - any database migrations restart the Heroku dyno
-- 
 - Access the live app at ``
 
 

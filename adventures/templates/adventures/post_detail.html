@@ -23,21 +23,21 @@
 </div>
 
 <!--tags for posts-->
-<div class="row mt-4">
-  <div class="col">
+<div class="row mt-4 justify-content-center">
+  <div class="col text-center">
       <h5>Tags:</h5>
       <ul>
         {% for post_tag in post_tags %}
             <li>
                 {% with post_tag.tag as tag %}
                     {% if tag.location %}
-                        <strong>Location:</strong> {{ tag.location }}
+                        <strong>Location:</strong> <span class="tag-box">📍 {{ tag.location }}</span>
                     {% endif %}
                     {% if tag.activity %}
-                        <strong>Activity:</strong> {{ tag.activity }}
+                        <strong>Activity:</strong> <span class="tag-box">{{ tag.activity }} </span>
                     {% endif %}
                     {% if tag.type_choices %}
-                        <strong>Type:</strong> {{ tag.type_choices }}
+                        <strong>Type:</strong> <span class="tag-box"> {{ tag.type_choices }}</span>
                     {% endif %}
                 {% endwith %}
             </li>
