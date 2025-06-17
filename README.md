@@ -9,18 +9,22 @@ Welcome Danny O'Brien,
   - <a href="#strategy">Strategy</a>
   - <a href="#db">Database structure</a>
   - <a href="#design">Design</a>
+  - <a href="#user-story">Epics and User Stories Mapping</a>
+  - <a href="#design-choices">Design choices</a>
 - <a href="#features">Existing Features</a>
 - <a href="#f_features">Features left to Implement</a>
 - <a href="#testing">Testing</a>
 - <a href="#bugs">Bugs</a>
-- <a href="#technology">Languages, Technologies & Libraries</a>
+
 - <a href="#credits">Credits</a>
 - <a href="#deployment">Deployment</a>
-- <a href="#acknowledgements">Acknowledgements</a>
+
 
 ## <div id="ux">UX</div>
 ### Overview
 Adventure Finder is a vlog and blog app that allows users to  easily find adventures  within activities and locations they are interested in. the adventure finder app is a community of outdoor enthusiasts looking to find information about an outdoor activity, location, local businesses and be able comment or like on thier favorite posts. Magazine style operated with only featured user stories written by designated approved authors.
+
+Access the live app at [https://adventure-finder-d689cf405bdd.herokuapp.com/]
 
 
 ### <div id="strategy">Strategy</div>
@@ -33,6 +37,8 @@ Determining the best approach meant studying the needs of potential users. This 
 The Agile methodology was used to plan the project. Github projects was used as the tool to demonstrate this.  Issues were used to create User Stories with custom templates ([Link to Kanban board](https://github.com/users/dannyobrien761/projects/1/views/1)). 
 
 You can see from the kanban board link and the user stories individual links below the implementation of prioritising user stories within the agile tool as I have set labels on the user stories indicating high, medium or low priority (also outlined below)
+
+<div id="user-story">Epics and User Stories Mapping</div>
 #### Epics and User Stories Mapping
  Below you can see the implementation of mapping user stories to epics within the agile process
 - **User Onboarding**  
@@ -116,6 +122,8 @@ the acceptance criteria was formulated  from the card conversation and confirmat
 - **As a user,** I want a search bar to quickly find specific posts or topics so that I save time.
 - **As a user,** I want the site to load quickly and efficiently so that I have a smooth browsing experience.
 - **As a user,** I want to access the site from my mobile device and still have a great experience so that I can browse on the go.
+
+<div id="design-choices">Design Choices</div>
 
 ### Design choices
 #### sitemap
@@ -379,7 +387,7 @@ The site was deployed following the below steps:
 - create heroku app and link heroku app to github repository
 - Set necessary environment variables on the Heroku dashboard, secret key etc.
 - any database migrations restart the Heroku dyno
-- Access the live app at ``
+- Access the live app at [https://adventure-finder-d689cf405bdd.herokuapp.com/]
 
 
 
@@ -399,6 +407,7 @@ The site was deployed following the below steps:
 
 - Photo by <a href="https://unsplash.com/@intothefab?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fabio Comparelli</a> on <a href="https://unsplash.com/photos/running-man-on-bridge-uq2E2V4LhCY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
       
-
+Photo by <a href="https://unsplash.com/@silasbaisch?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Silas Baisch</a> on <a href="https://unsplash.com/photos/high-angle-photography-of-man-surfing-giant-wave-L78RstAZuTY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+      
 
 [def]: https://github.com/dannyobrien761/adventure-finder/issues/7
